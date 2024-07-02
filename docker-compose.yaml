@@ -1,0 +1,28 @@
+version: '3.8'
+
+
+services:
+  trino-coordinator:
+    image: 'trinodb/trino:latest'
+    container_name: coordinator
+    ports:
+      - '8080:8080'
+    volumes:
+      - ./congig/catalog:/etc/trino/catalog
+      - ./config/coordinator/config.properties:/etc/trino/config.properties
+      - ./config/coordinator/node.properties:/etc/trino/node.properties
+  
+  trino-worker:
+    image: 'trinodb/trino:latest'
+    container_name: worker
+    volumes:
+      - ./config/worker/config.properties:/etc/trino/config.properties
+      - ./config/worker/node.properties:/etc/trino/node.properties
+
+  postgres:
+    image: postgres:16.3
+    container_name: postgres
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: mydb
