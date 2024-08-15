@@ -34,8 +34,7 @@
 				"njpwerner.autodocstring"
 			],
 			"settings": {
-				"terminal.integrated.scrollback": 10000,
-				"python.defaultInterpreterPath": "/workspaces/trino/.venv/bin/python"
+				"terminal.integrated.scrollback": 10000
 			}
 		}
 	},
